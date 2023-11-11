@@ -1,0 +1,72 @@
+﻿@model SGP.Models.Usuario
+@{
+    ViewData["Title"] = "Buscador";
+}
+
+
+<h3>Buscar Usuario</h3>
+
+<form method="post">
+    <label asp-for="NumeroDoc"> Numero de Documento </label>
+    <input asp-for="NumeroDoc" class="form-control me-2" style="width:40%" type="text" />
+    <div class="form-group">
+        <label asp-for="IdDoc" class="control-label"></label>
+
+        @Html.DropDownList("IdDoc", new SelectList(ViewBag.Documento, "IdDoc", "Descripcion"), new {@class="form-control"})
+
+        <span asp-validation-for="IdDoc" class="text-danger"></span>
+    </div>
+
+
+    <input type="submit" class=" btn btn-primary" />
+
+    <div class="table table-borderless">
+        @if (Model != null)
+        {
+            <table class="table  table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Tipo Ident</th>
+                        <th>N° Documento</th>
+                        <th>Genero</th>
+                        <th>E-mail</th>
+                        <th>Programa</th>
+                        <th>Rol</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem=>modelItem.Nombre)</td>
+                        <td>@Html.DisplayFor(modelItem=>modelItem.PrimerApellido)</td>
+                        <td>@Html.DisplayFor(modelItem=>modelItem.SegundoApellido)</td>
+                        <td>@Html.DisplayFor(modelItem => modelItem.IdDocNavigation.Descripcion)</td>
+                        <td>@Html.DisplayFor(modelItem => modelItem.IdGeneroNavigation.Descripcion)</td>
+                        <td>@Html.DisplayFor(modelItem=>modelItem.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => modelItem.IdProgramaNavigation.Descripcion)</td>
+                        <td>@Html.DisplayFor(modelItem => modelItem.IdRolNavigation.Descripcion)</td>
+
+                        <td class="btn btn-outline green lighten-2"><a asp-action="Edit" asp-route-id="@Model.IdUsuario">Edit</a> </td>
+
+
+                        <td class="btn btn-danger red lighten-2">@Html.ActionLink("Delete", "Eliminar", new{Model.IdUsuario}, new {onclick = "return confirm('¿Estas seguro de que desea eliminar este usuario?')"})</td>
+
+                        @*<td>@Html.DisplayFor(modelItem => modelItem.Nombre) </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.PrimerApellido) </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.NumeroDoc) </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.IdRol) </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.IdPrograma) </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.IdGenero) </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.IdDoc) </td>*@
+
+
+                    </tr>
+
+                </tbody>
+            </table>
+        }
+    </div>
+</form>
