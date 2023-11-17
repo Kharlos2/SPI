@@ -13,5 +13,7 @@ public partial class Pago
 
     public DateTime Fecha { get; set; }
 
+    public string urlImage { get; set; }
+
     public virtual Usuario IdUsuarioNavigation { get; set; } = null!;
 }

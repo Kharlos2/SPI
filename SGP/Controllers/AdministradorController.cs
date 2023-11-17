@@ -21,6 +21,9 @@ namespace SGP.Controllers
             context = spiContext;
         }
 
+       
+
+
 
         public IActionResult CrearUsuario()
         {

@@ -17,8 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Coordinador\" />
-    <Folder Include="Views\Estudiante\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
 </Project>
